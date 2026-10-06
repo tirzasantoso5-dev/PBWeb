@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: maroon;
+    color: white;
+    line-height: 1.6;
+}
+
+.halaman {
+    min-height: 100vh;
+    display: none;
+    padding: 20px;
+}
+
+.halaman.aktif {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+nav button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+.layout {
+    width: 100%;
+    max-width: 1100px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+.daftar-artikel {
+    display: grid;
+
+    /* MOBILE = 1 KOLOM */
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+    width: 100%;
+}
+
+.daftar-artikel article {
+    background-color: white;
+    color: maroon;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    text-align: left;
+}
+
+aside {
+    background-color: white;
+    color: maroon;
+
+    padding: 20px;
+
+    border-radius: 10px;
+}
+
+@media (min-width: 768px) {
+
+    .daftar-artikel {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .layout {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .portofolio {
+        flex: 3;
+    }
+
+    aside {
+        flex: 1;
+    }
+}
+@media (min-width: 992px) {
+
+    .daftar-artikel {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .halaman {
+        padding: 40px;
+    }
+}

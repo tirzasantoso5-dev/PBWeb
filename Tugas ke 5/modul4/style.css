@@ -1,0 +1,24 @@
+.halaman {
+    min-height: 100vh;
+    display: none;
+    padding: 40px;
+}
+
+.halaman.aktif {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Langkah 2: gaya dark mode */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #f2f2f2;
+}
+
+/* Langkah 3: sembunyikan aside */
+.tersembunyi {
+    display: none;
+}

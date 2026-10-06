@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Saya</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body bgcolor="maroon" text="white">
+
+<main>
+
+    <section id="halaman1" class="halaman aktif">
+        <header>
+            <h1>PROFIL SAYA</h1>
+            <hr>
+
+            <p align="center">
+                <img src="tirza.jpg" width="230" height="180">
+            </p>
+
+            <nav>
+                <button onclick="tampilkanHalaman(1)">Data Diri</button>
+                <button onclick="tampilkanHalaman(2)">Tentang Saya</button>
+                <button id="btn-tema">Mode Gelap</button>
+            </nav>
+        </header>
+
+        <header style="text-align: center;">
+            <h2>Data Diri</h2>
+            <p>
+                <b>Nama:</b>Tirza Valencia Santoso<br>
+                <b>Nama Panggilan:</b>Tirza<br>
+                <b>Tempat/tgl Lahir:</b>Surakarta, 07 febuari 2008<br>
+                <b>Program Studi:</b>Informatika<br>
+                <b>Universitas Sanata Dharma</b><br>
+                <b>Saya memiliki ketertarikan terhadap teknologi, pemrograman, dan pengembangan website.</b>
+            </p>
+            <button onclick="tampilkanHalaman(2)">Next →</button>
+        </header>
+    </section>
+
+    <section id="halaman2" class="halaman">
+        <header style="text-align: center;">
+            <h2>HALLO SEMUAAA!!!</h2>
+            <p align="center">
+                <img src="tirza4 (1).jpg" width="230" height="310">
+            </p>
+            <b>Haloo perkenalkan Nama Lengkap aku Tirza Valencia Santoso,</b>
+            <b>teman teman boleh panggil aku Tirza yaa,not tirsa this TIRZA pake Z yaakkk,</b>
+            <b>aku berasal dari Kalimantan Barat, Landak, mandor</b>
+            <b>aku berkuliah di Universitas Sanata Dharma di program studi  Informatika,</b>
+            <b>alasan aku masuk informatika selain karna memiliki ketertarikan terhadap teknologi aku juga senang banget belajar ilmu baru,</b>
+            <b>Karna bagi ku coding adalah ilmu yg baru dan menarik untuk aku pelajari, selain itu lapangan pekerjaan nya juga luas bangett  hahah</b><br>
+            <b>Aku juga senang banget berinteraksi dengan banyak orang, aku juga suka jalan jalan lohh, contoh nya jalan jalan ke gunung HAHAHA,</b>
+            <b>kemarin aku baru aja mendaki gunung prauu lohhh, oke sekarang makanan favorit aku nih,</b>
+            <b>aku suka banget nih makan nasi goreng apalagi seafood, minuman kesukaan aku air putih, ohh iyaa aku juga suka warna maroon temen-temen</b>
+            <b>apa lagii yaa??kalo mau tau banyak tentang aku boleh liat instagram aku yah @trzavlncia_sntso0 hihiks</b>
+        </header>
+
+        <h3>Portofolio & Pengalaman</h3>
+        <button id="btn-tambah">Tambah Portofolio</button>
+        <div class="daftar-portofolio"></div>
+
+        <aside>
+            <h4>Kontak & Media Sosial</h4>
+            <p>
+                Instagram: <b>@trzavlncia_sntso0</b>
+            </p>
+        </aside>
+
+        <button id="btn-info">Info Tambahan</button>
+        <button onclick="tampilkanHalaman(1)">← Kembali</button>
+
+        <footer>
+            &copy; 2026 Tirza Valencia Santoso
+        </footer>
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

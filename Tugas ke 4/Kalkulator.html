@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kalkulator Sederhana</title>
+    </head>
+    <body>
+        <h2>Kalkulator Sederhana</h2>
+
+        <label>Bilangan 1</label>
+        <input type="text" id="bilangan1">
+        <br><br>
+
+        <label>Bilangan 2</label>
+        <input type="text" id="bilangan2">
+        <br><br>
+
+        <button onclick="penjumlahan()">Penjumlahan</button>
+        <button onclick="pengurangan()">Pengurangan</button>
+        <br><br> 
+
+        <label>Hasil</label>
+        <input type="text" id="hasil">
+
+        <script>
+            function penjumlahan() {
+                var bilangan1 = parseFloat(
+                    document.getElementById("bilangan1").value 
+                );
+                var bilangan2 = parseFloat(
+                    document.getElementById("bilangan2").value 
+                );
+
+                var hasil = bilangan1 + bilangan2;
+                document.getElementById("hasil").value = hasil;
+            }
+
+            function pengurangan() {
+                var bilangan1 = parseFloat(
+                    document.getElementById("bilangan1").value 
+                );
+                var bilangan2 = parseFloat(
+                    document.getElementById("bilangan2").value 
+                );
+
+                var hasil = bilangan1 - bilangan2;
+                document.getElementById("hasil").value = hasil;
+            }
+        </script>
+    </body>
+    </html>
