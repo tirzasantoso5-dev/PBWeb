@@ -1,11 +1,232 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulir Pendaftaran Mahasiswa Baru</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+  <header class="hero">
+    <p class="kicker">Pemrograman Berbasis Web · Modul 6 — Validasi Form</p>
+    <h1>Formulir Pendaftaran Mahasiswa Baru</h1>
+    <p></p>
+    <h2>Universitas Sanata Dharma</h2>
+    <p>Tahun Akademik 2026/2027. Isi seluruh data bertanda <span class="wajib">*</span> dengan benar.</p>
+  </header>
+
+  <main>
+    <p id="pesan-ringkas" class="pesan-error"></p>
+
+    <form id="form-pmb" novalidate>
+
+      <fieldset>
+        <legend>A. Data Pribadi</legend>
+
+        <label for="nama">Nama Lengkap *</label>
+        <input type="text" id="nama" data-nama="Nama lengkap" placeholder="Sesuai ijazah"
+               required minlength="3" maxlength="60" pattern="[A-Za-z .'\-]+"
+               data-pesan="Nama hanya boleh berisi huruf">
+        <span class="pesan-error" id="error-nama"></span>
+
+        <label>Jenis Kelamin *</label>
+        <div>
+          <label><input type="radio" name="jk" value="Laki-laki"> Laki-laki</label>
+          <label><input type="radio" name="jk" value="Perempuan"> Perempuan</label>
+        </div>
+        <span class="pesan-error" id="error-jk"></span>
+
+        <label for="tempat-lahir">Tempat Lahir *</label>
+        <input type="text" id="tempat-lahir" data-nama="Tempat lahir"
+               required minlength="3" maxlength="40" pattern="[A-Za-z .'\-]+"
+               data-pesan="Tempat lahir hanya boleh berisi huruf">
+        <span class="pesan-error" id="error-tempat-lahir"></span>
+
+        <label for="tgl-lahir">Tanggal Lahir *</label>
+        <input type="date" id="tgl-lahir" data-nama="Tanggal lahir" required>
+        <span class="pesan-error" id="error-tgl-lahir"></span>
+
+        <label for="nik">NIK (16 digit) *</label>
+        <input type="text" id="nik" data-nama="NIK" required pattern="[0-9]{16}" maxlength="16"
+               data-pesan="NIK harus tepat 16 digit angka">
+        <span class="pesan-error" id="error-nik"></span>
+
+        <label for="agama">Agama *</label>
+        <select id="agama" data-nama="Agama" required>
+          <option value="">-- Pilih --</option>
+          <option>Islam</option><option>Kristen Protestan</option><option>Katolik</option>
+          <option>Hindu</option><option>Buddha</option><option>Konghucu</option>
+        </select>
+        <span class="pesan-error" id="error-agama"></span>
+
+        <label for="email">Email *</label>
+        <input type="email" id="email" data-nama="Email" placeholder="nama@email.com" required>
+        <span class="pesan-error" id="error-email"></span>
+
+        <label for="hp">No. HP *</label>
+        <input type="tel" id="hp" data-nama="No. HP" placeholder="081234567890" required
+               pattern="08[0-9]{8,11}" data-pesan="No. HP harus diawali 08 dan berisi 10-13 digit">
+        <span class="pesan-error" id="error-hp"></span>
+
+        <label for="foto">Pas Foto (JPG/PNG, maks. 2 MB) *</label>
+        <input type="file" id="foto" data-nama="Pas foto" accept="image/jpeg,image/png" required>
+        <span class="pesan-error" id="error-foto"></span>
+      </fieldset>
+
+      <fieldset>
+        <legend>B. Alamat Tempat Tinggal</legend>
+
+        <label for="alamat">Alamat Lengkap *</label>
+        <textarea id="alamat" data-nama="Alamat" required minlength="10" maxlength="200"></textarea>
+        <span class="pesan-error" id="error-alamat"></span>
+
+        <label for="kota">Kota/Kabupaten *</label>
+        <input type="text" id="kota" data-nama="Kota/Kabupaten" required minlength="3">
+        <span class="pesan-error" id="error-kota"></span>
+
+        <label for="provinsi">Provinsi *</label>
+        <select id="provinsi" data-nama="Provinsi" required>
+          <option value="">-- Pilih --</option>
+          <option>Aceh</option><option>Sumatera Utara</option><option>Sumatera Barat</option>
+          <option>Riau</option><option>Jambi</option><option>Sumatera Selatan</option>
+          <option>Lampung</option><option>DKI Jakarta</option><option>Jawa Barat</option>
+          <option>Jawa Tengah</option><option>DI Yogyakarta</option><option>Jawa Timur</option>
+          <option>Banten</option><option>Bali</option><option>Nusa Tenggara Barat</option>
+          <option>Nusa Tenggara Timur</option><option>Kalimantan Barat</option><option>Kalimantan Timur</option>
+          <option>Kalimantan Selatan</option><option>Kalimantan Utara</option><option>Sulawesi</option>
+          <option>Maluku</option><option>Papua</option>
+        </select>
+        <span class="pesan-error" id="error-provinsi"></span>
+
+        <label for="kodepos">Kode Pos *</label>
+        <input type="text" id="kodepos" data-nama="Kode pos" required pattern="[0-9]{5}" maxlength="5"
+               data-pesan="Kode pos harus 5 digit angka">
+        <span class="pesan-error" id="error-kodepos"></span>
+      </fieldset>
+
+      <fieldset>
+        <legend>C. Data Orang Tua / Wali</legend>
+
+        <label for="ayah">Nama Ayah/Wali *</label>
+        <input type="text" id="ayah" data-nama="Nama ayah/wali" required minlength="3"
+               pattern="[A-Za-z .'\-]+" data-pesan="Nama hanya boleh berisi huruf">
+        <span class="pesan-error" id="error-ayah"></span>
+
+        <label for="ibu">Nama Ibu *</label>
+        <input type="text" id="ibu" data-nama="Nama ibu" required minlength="3"
+               pattern="[A-Za-z .'\-]+" data-pesan="Nama hanya boleh berisi huruf">
+        <span class="pesan-error" id="error-ibu"></span>
+
+        <label for="pekerjaan">Pekerjaan Orang Tua *</label>
+        <select id="pekerjaan" data-nama="Pekerjaan orang tua" required>
+          <option value="">-- Pilih --</option>
+          <option>PNS/TNI/Polri</option><option>Karyawan Swasta</option><option>Wiraswasta</option>
+          <option>Petani/Nelayan</option><option>Guru/Dosen</option><option>Pensiunan</option>
+          <option>Lainnya</option>
+        </select>
+        <span class="pesan-error" id="error-pekerjaan"></span>
+
+        <label for="hp-ortu">No. HP Orang Tua (opsional)</label>
+        <input type="tel" id="hp-ortu" data-nama="No. HP orang tua" pattern="08[0-9]{8,11}"
+               data-pesan="No. HP harus diawali 08 dan berisi 10-13 digit">
+        <span class="pesan-error" id="error-hp-ortu"></span>
+      </fieldset>
+
+      <fieldset>
+        <legend>D. Asal Sekolah</legend>
+
+        <label for="sekolah">Nama Sekolah *</label>
+        <input type="text" id="sekolah" data-nama="Nama sekolah" required minlength="3">
+        <span class="pesan-error" id="error-sekolah"></span>
+
+        <label for="nisn">NISN (10 digit) *</label>
+        <input type="text" id="nisn" data-nama="NISN" required pattern="[0-9]{10}" maxlength="10"
+               data-pesan="NISN harus tepat 10 digit angka">
+        <span class="pesan-error" id="error-nisn"></span>
+
+        <label for="jurusan">Jurusan *</label>
+        <select id="jurusan" data-nama="Jurusan" required>
+          <option value="">-- Pilih --</option>
+          <option>IPA</option><option>IPS</option><option>Bahasa</option>
+          <option>SMK</option><option>Lainnya</option>
+        </select>
+        <span class="pesan-error" id="error-jurusan"></span>
+
+        <label for="lulus">Tahun Lulus *</label>
+        <input type="number" id="lulus" data-nama="Tahun lulus" required min="2020" max="2026">
+        <span class="pesan-error" id="error-lulus"></span>
+
+        <label for="nilai">Rata-rata Nilai Rapor (0-100) *</label>
+        <input type="number" id="nilai" data-nama="Nilai rapor" required min="0" max="100" step="0.01">
+        <span class="pesan-error" id="error-nilai"></span>
+      </fieldset>
+
+      <fieldset>
+        <legend>E. Pilihan Program Studi</legend>
+
+        <label>Jalur Pendaftaran *</label>
+        <div>
+          <label><input type="radio" name="jalur" value="Prestasi Rapor"> Prestasi Rapor</label>
+          <label><input type="radio" name="jalur" value="Tes Tertulis"> Tes Tertulis</label>
+          <label><input type="radio" name="jalur" value="Beasiswa"> Beasiswa</label>
+        </div>
+        <span class="pesan-error" id="error-jalur"></span>
+
+        <label for="prodi1">Pilihan 1 *</label>
+        <select id="prodi1" data-nama="Pilihan 1" required>
+          <option value="">-- Pilih program studi --</option>
+          <option>Teknik Informatika</option><option>Teknik Mesin</option>
+          <option>Teknik Elektro</option><option>Manajemen</option>
+          <option>Akuntansi</option><option>Psikologi</option><option>Farmasi</option>
+        </select>
+        <span class="pesan-error" id="error-prodi1"></span>
+
+        <label for="prodi2">Pilihan 2 (opsional)</label>
+        <select id="prodi2" data-nama="Pilihan 2">
+          <option value="">-- Tidak ada --</option>
+          <option>Teknik Informatika</option><option>Teknik Mesin</option>
+          <option>Teknik Elektro</option><option>Manajemen</option>
+          <option>Akuntansi</option><option>Psikologi</option><option>Farmasi</option>
+        </select>
+        <span class="pesan-error" id="error-prodi2"></span>
+      </fieldset>
+
+      <fieldset>
+        <legend>F. Akun Pendaftar</legend>
+
+        <label for="username">Username *</label>
+        <input type="text" id="username" data-nama="Username" required minlength="4" maxlength="20"
+               pattern="[A-Za-z0-9_]+" data-pesan="Username hanya boleh huruf, angka, dan garis bawah">
+        <span class="pesan-error" id="error-username"></span>
+
+        <label for="password">Password *</label>
+        <input type="password" id="password" data-nama="Password" required minlength="8">
+        <span class="pesan-error" id="error-password"></span>
+
+        <label for="konfirmasi">Konfirmasi Password *</label>
+        <input type="password" id="konfirmasi" data-nama="Konfirmasi password" required>
+        <span class="pesan-error" id="error-konfirmasi"></span>
+      </fieldset>
+
+      <label>
+        <input type="checkbox" id="setuju"> Saya menyatakan bahwa seluruh data yang diisi adalah benar. *
+      </label>
+      <span class="pesan-error" id="error-setuju"></span>
+
+      <button type="submit">Kirim Pendaftaran</button>
+      <button type="reset">Reset</button>
+    </form>
+
+    <!-- Halaman hasil: tampil setelah pendaftaran berhasil -->
+    <section id="hasil" hidden>
+      <h2>Pendaftaran Berhasil (simulasi)</h2>
+      <p>Nomor pendaftaran Anda: <strong id="no-daftar"></strong></p>
+      <table id="tabel-data"></table>
+      <button type="button" id="btn-lagi">Daftarkan calon mahasiswa lain</button>
+    </section>
+  </main>
+
+
+  <script src="script.js"></script>
 </body>
 </html>
