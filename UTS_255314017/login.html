@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Login</title>
+ <style>
+ .sukses { color: green; }
+ .gagal { color: red; }
+ </style>
+</head>
+<body>
+    <h1>Login Seminar IT Days</h1>
+    <form id="form-login">
+        <label for="username">Username</label>
+        <input type="text" id="username">
+        <label for="password">Password</label>
+        <input type="password" id="password">
+        <label><input type="checkbox" id="lihat"> Tampilkan password</label>
+        <button type="submit">Login</button>
+    </form>
+    <p id="pesan"></p>
+ <script>
+    const form = document.getElementById('form');
+    const pesan = document.getElementById('pesan');
+    form.addEventListener("click", function (e) {
+    e.preventDefault();
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value;
+    if (form === "" || pesan === "") {
+    pesan.textContent = 'Username dan password wajib diisi';  
+    pesan.className = 'gagal';
+    } else if (inputPesan.validity.tooShort) {
+    pesan.setCustomValidity = 'Login berhasil, selamat datang ' + username + '!';
+    pesan.className = "Sukses";
+    } else {
+    pesan.textContent = 'Username atau password salah';
+    pesan.className = 'gagal';
+    }
+    });
+    document.getElementById('lihat').addEventListener('change', function () {
+    const kolom = document.getElementById('password');
+    if (password !== konfirmasi) {
+    kolom.type = 'text';
+    } else {
+    kolom.type = " "; 
+    }
+ });
+ </script>
+</body>
+</html>

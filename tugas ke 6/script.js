@@ -229,3 +229,101 @@ document.querySelector("#btn-lagi").addEventListener("click", () => {
   form.hidden = false;
   window.scrollTo(0, 0);
 });
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrasi</title>
+    <style>
+        .sukses { color: green; }
+        .gagal { color: red; }
+ </style> 
+
+ </head>
+<body>
+    <h1>Registrasi Peserta Seminar IT Days</h1>
+    <form id="form-registrasi">
+
+    <label for="nama">Nama Lengkap</label>
+    <input type="text" id="nama">
+
+    <label for="email">Email</label>
+    <input type="text" id="email">
+
+    <label for="password">Password</label>
+    <input type="password" id="password">
+
+    <label for="konfirmasi">Konfirmasi Password</label>
+    <input type="password" id="konfirmasi">
+
+    <button type="submit">Daftar</button>
+ </form>
+ <ul id="daftar-error" class="gagal"></ul>
+ <p id="pesan" class="sukses"></p> 
+
+ <script>
+    const form = document.getElementById('form-registrasi');
+    const daftarError = document.getElementById('daftar-error');
+    const pesan = document.getElementById('pesan');
+
+    form.addEventListener('submit', function (e) {
+        // Mencegah halaman dimuat ulang
+        e.preventDefault();
+
+        // Mengambil nilai keempat kolom
+        const nama = document.getElementById('nama').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+        const konfirmasi = document.getElementById('konfirmasi').value;
+
+        // Menghapus pesan kesalahan sebelumnya
+        daftarError.innerHTML = '';
+        pesan.textContent = '';
+
+        // Menampung semua kesalahan
+        const errors = [];
+
+        // Validasi nama
+        if (nama === '') {
+            errors.push('Nama wajib diisi');
+        }
+
+        // Validasi email
+        if (!email.includes('@')) {
+            errors.push('Email harus mengandung @');
+        }
+
+        // Validasi panjang password
+        if (password.length < 6) {
+            errors.push('Password minimal 6 karakter');
+        }
+
+        // Validasi konfirmasi password
+        if (konfirmasi !== password) {
+            errors.push('Konfirmasi password tidak sama');
+        }
+
+        // Menampilkan semua pesan kesalahan
+        if (errors.length > 0) {
+            errors.forEach(function (error) {
+                const li = document.createElement('li');
+                li.textContent = error;
+                daftarError.appendChild(li);
+            });
+        } else {
+            // Registrasi berhasil
+            pesan.textContent =
+                'Registrasi berhasil. Selamat bergabung, ' + nama + '!';
+
+            pesan.className = 'sukses';
+
+            // Mengosongkan form
+            form.reset();
+        }
+    });
+
+</script>
+</body>
+</html>html></input>

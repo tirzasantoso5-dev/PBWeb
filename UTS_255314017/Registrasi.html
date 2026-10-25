@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrasi</title>
+    <style>
+        .sukses { color: green; }
+        .gagal { color: red; }
+ </style>
+ </head>
+<body>
+    <h1>Registrasi Peserta Seminar IT Days</h1>
+    <form id="form-registrasi">
+    <label for="nama">Nama Lengkap</label>
+    <input type="text" id="nama">
+
+    <label for="email">Email</label>
+    <input type="text" id="email">
+
+    <label for="password">Password</label>
+    <input type="password" id="password">
+
+    <label for="konfirmasi">Konfirmasi Password</label>
+    <input type="password" id="konfirmasi">
+
+    <button type="submit">Daftar</button>
+    </form>
+ <ul id="daftar-error" class="gagal"></ul>
+ <p id="pesan" class="sukses"></p>
+ <script>
+    const form = document.getElementById('form-registrasi');
+    const daftarError = document.getElementById('daftar-error');
+    const pesan = document.getElementById('pesan');
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const password = document.getElementById('password').value;
+        const konfirmasi = document.getElementById('konfirmasi').value;
+        const nama = document.getElementById('nama').value.trim();
+        const email = document.getElementById('email').value.trim();
+
+        daftarError.innerHTML = '';
+        pesan.textContent = '';
+
+        const errors = [];
+        if (nama === '') {
+            errors.push('Nama wajib diisi');
+        }
+        if (!email.includes('@')) {
+            errors.push('Email harus mengandung @');
+        }
+        if (password.length < 6) {
+            errors.push('Password minimal 6 karakter');
+        }
+        if (konfirmasi !== password) {
+            errors.push('Konfirmasi password tidak sama');
+        }
+        if (errors.length > 0) {
+            errors.forEach(function (error) {
+                const li = document.createElement('li');
+                li.textContent = error;
+                daftarError.appendChild(li);
+            });
+        } else {
+            pesan.textContent ='Registrasi berhasil. Selamat bergabung, ' + nama + '!';
+            pesan.className = 'sukses';
+            form.reset();
+        }
+    });
+  
+ </script>
+</body>
+</html>

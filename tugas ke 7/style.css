@@ -1,0 +1,47 @@
+.halaman {
+    min-height: 100vh;
+    display: none;
+    padding: 40px;
+}
+
+.halaman.aktif {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Langkah 2: gaya dark mode */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #f2f2f2;
+}
+
+/* Langkah 3: sembunyikan aside */
+.tersembunyi {
+    display: none;
+}
+
+/* MODUL 5 B.2: efek hover pada artikel */
+.artikel-hover {
+    background-color: #eef4fb;
+    color: #1a1a1a;
+}
+
+/* MODUL 5 tugas: pesan error validasi */
+#pesan-error {
+    color: #ffcc00;
+    font-weight: bold;
+}
+
+/* MODUL 5 tugas: tombol kembali ke atas */
+#btn-atas {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+#btn-atas.tersembunyi {
+    display: none;
+}
