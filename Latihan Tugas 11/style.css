@@ -1,0 +1,67 @@
+* { box-sizing: border-box; }
+body { font-family: system-ui, Arial, sans-serif; line-height: 1.6; margin: 0; color: #1a1a1a; background: #fff; }
+header, main, footer { padding: 1rem 1.25rem; }
+header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; border-bottom: 1px solid #ddd; }
+nav { display: flex; gap: .5rem; }
+button { cursor: pointer; padding: .4rem .8rem; border: 1px solid #888; border-radius: 6px; background: #f2f2f2; font: inherit; }
+
+/* B.2 — <salam-pengguna> default inline; beri sedikit gaya */
+salam-pengguna { font-style: italic; color: #1f2761; }
+
+/* ===== Modul 12 — gaya komponen =====
+   Aturan .kartu dan .kartu button dari Modul 11 DIHAPUS: elemen itu kini berada
+   di dalam shadow tree sehingga CSS global tidak menjangkaunya.
+   Halaman hanya mengatur custom property (kartu-artikel, kartu-komentar)
+   dan bagian yang sengaja dibuka lewat ::part(). */
+:root {
+  --kartu-garis: #ddd;
+  --kartu-latar: transparent;
+  --kartu-hover: #eef4fb;
+  --kartu-radius: 8px;
+  --tombol-latar: #f2f2f2;
+  --tombol-garis: #888;
+  --komentar-latar: #f7f7f7;
+  --komentar-aksen: #2e75b6;
+}
+
+/* daftar-artikel adalah custom element (default inline) -> jadikan grid */
+.daftar-artikel { display: grid; gap: 1rem; margin-bottom: 1.5rem; }
+
+/* ::part() — gaya tombol Hapus diatur dari halaman */
+kartu-artikel::part(tombol-hapus) { border-color: #d9534f; color: #d9534f; background: #fff; }
+
+aside { border: 1px dashed #bbb; border-radius: 8px; padding: 1rem; background: #fafafa; margin-bottom: 1.5rem; }
+
+#komentar form, #form-daftar { display: grid; gap: .5rem; max-width: 480px; }
+#komentar input, #komentar textarea, #form-daftar input { padding: .5rem; border: 2px solid #bbb; border-radius: 6px; font: inherit; }
+#komentar textarea { min-height: 90px; resize: vertical; }
+#pendaftaran { margin-top: 1.5rem; }
+form button[type="submit"] { justify-self: start; }
+
+#form-komentar input:valid, #form-komentar textarea:valid, #form-daftar input:valid { border-color: #5cb85c; }
+#form-komentar input:invalid:not(:placeholder-shown),
+#form-komentar textarea:invalid:not(:placeholder-shown),
+#form-daftar input:invalid:not(:placeholder-shown) { border-color: #d9534f; }
+.pesan-error { color: #d9534f; font-size: .85em; display: block; min-height: 1em; }
+
+#btn-reset { margin-top: .5rem; border-color: #d9534f; color: #d9534f; }
+
+body.dark-mode { background: #1a1a1a; color: #f2f2f2; }
+body.dark-mode aside,
+body.dark-mode #komentar input, body.dark-mode #komentar textarea,
+body.dark-mode #form-daftar input { background: #222; color: #f2f2f2; border-color: #444; }
+body.dark-mode button { background: #333; color: #f2f2f2; border-color: #666; }
+/* Dark mode: cukup ganti nilai variabel; komponen ikut berganti tema */
+body.dark-mode {
+  --kartu-garis: #444;
+  --kartu-latar: #222;
+  --kartu-hover: #2a3340;
+  --tombol-latar: #333;
+  --tombol-garis: #666;
+  --komentar-latar: #262626;
+  --komentar-aksen: #6fa8dc;
+}
+body.dark-mode kartu-artikel::part(tombol-hapus) { background: #333; }
+body.dark-mode salam-pengguna { color: #cadcfc; }
+
+.tersembunyi { display: none; }

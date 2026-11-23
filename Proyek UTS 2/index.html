@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BukuKu — Cari Buku dan Rak Bacaan Pribadi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&family=Young+Serif&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1 class="logo">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <rect x="3" y="6" width="7" height="21" rx="1.5" fill="#f4d35e"/>
+        <rect x="12" y="2" width="7" height="25" rx="1.5" fill="#ffffff"/>
+        <rect x="21" y="8" width="7" height="19" rx="1.5" fill="#7fc4bd" transform="rotate(10 24.5 27)"/>
+      </svg>
+      BukuKu
+    </h1>
+    <nav aria-label="Navigasi utama">
+      <ul>
+        <li><a href="#cari" data-tab="cari" class="aktif">Cari</a></li>
+        <li><a href="#rak" data-tab="rak">Rak Saya <span id="jumlah-rak" class="badge">0</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Bagian 1: pencarian -->
+    <section id="cari" aria-labelledby="judul-cari">
+      <h2 id="judul-cari">Mau baca apa hari ini?</h2>
+      <p class="pengantar">Cari judul atau nama penulis, lalu simpan yang menarik ke rak bacaanmu.</p>
+      <form id="form-cari" novalidate>
+        <label for="kata-kunci" class="sr-only">Judul atau penulis</label>
+        <input type="text" id="kata-kunci" name="kata-kunci" placeholder="Judul atau nama penulis" autocomplete="off">
+        <button type="submit" id="tombol-cari">Cari</button>
+      </form>
+      <p id="pesan-error" class="pesan-error" role="alert"></p>
+      <p id="status" role="status">Coba cari “laskar pelangi” atau “harry potter”.</p>
+      <div id="daftar-hasil" class="grid-buku"></div>
+    </section>
+
+    <!-- Bagian 2: rak bacaan -->
+    <section id="rak" aria-labelledby="judul-rak" hidden>
+      <h2 id="judul-rak">Rak Saya</h2>
+      <div class="filter">
+        <label for="filter-status">Tampilkan:</label>
+        <select id="filter-status">
+          <option value="semua">Semua</option>
+          <option value="ingin">Ingin dibaca</option>
+          <option value="sudah">Sudah dibaca</option>
+        </select>
+      </div>
+      <p id="rak-kosong" class="kosong"></p>
+      <div id="daftar-rak" class="grid-buku"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Data buku dari <a href="https://openlibrary.org" target="_blank" rel="noopener">Open Library</a></p>
+  </footer>
+
+  <div id="notif" role="status" aria-live="polite"></div>
+
+  <script src="komponen.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

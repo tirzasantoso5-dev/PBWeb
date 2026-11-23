@@ -1,0 +1,131 @@
+.halaman {
+    min-height: 100vh;
+    display: none;
+    padding: 40px;
+}
+
+.halaman.aktif {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Langkah 2: gaya dark mode */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #f2f2f2;
+}
+
+/* Langkah 3: sembunyikan aside */
+.tersembunyi {
+    display: none;
+}
+
+/* MODUL 5 B.2: efek hover pada artikel */
+.artikel-hover {
+    background-color: #eef4fb;
+    color: #1a1a1a;
+}
+
+/* MODUL 5 tugas: pesan error validasi */
+#pesan-error {
+    color: #ffcc00;
+    font-weight: bold;
+}
+
+/* MODUL 5 tugas: tombol kembali ke atas */
+#btn-atas {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+#btn-atas.tersembunyi {
+    display: none;
+}
+
+/*MODUL 8  spinner loading */
+.spinner {
+    width: 40px;
+    height: 40px;
+    margin: 10px auto;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #ffcc00;
+    border-radius: 50%;
+    animation: putar 1s linear infinite;
+}
+
+@keyframes putar {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* MODUL 8 pesan error fetch*/
+#pesan-fetch-error,
+#pesan-komentar-error {
+    color: #ffcc00;
+    font-weight: bold;
+}
+
+/*MODUL 8 daftar komentar dari API */
+#daftar-komentar-api {
+    text-align: left;
+}
+
+/* MODUL 10 — Custom Elements */
+kartu-artikel,
+kartu-komentar {
+    display: block;   /* wajib agar tata letak berjalan */
+}
+
+.daftar-portofolio,
+.daftar-artikel {
+    width: min(640px, 100%);
+}
+
+#daftar-komentar {
+    width: min(640px, 100%);
+}
+
+/* MODUL 11 — gaya komponen Shadow DOM
+   Aturan .kartu, .kartu time, dan .komentar-item DIHAPUS dari sini karena
+   elemennya kini berada di dalam shadow tree (CSS global tidak menjangkaunya);
+   gayanya pindah ke <template> di komponen.js. Halaman hanya mengatur
+   custom property dan bagian yang sengaja dibuka lewat ::part(). */
+:root {
+    --kartu-garis: #ddd;
+    --kartu-latar: transparent;
+    --kartu-teks: #ffffff;        /* custom property baru 1 */
+    --kartu-radius: 8px;          /* custom property baru 2 */
+    --kartu-hover: #eef4fb;
+    --kartu-teks-hover: #1a1a1a;
+    --komentar-aksen: #ffcc00;
+}
+
+/* ::part() — gaya tombol Like & Hapus diatur dari halaman */
+kartu-artikel::part(tombol-like) {
+    border: 1px solid #ffcc00;
+    border-radius: 6px;
+    background: #ffcc00;
+    color: #1a1a1a;
+    font-weight: bold;
+}
+kartu-artikel::part(tombol-hapus) {
+    border: 1px solid #ffcc00;
+    border-radius: 6px;
+    background: transparent;
+    color: inherit;
+}
+
+/* Dark mode: cukup ganti nilai variabel; komponen ikut berganti tema */
+body.dark-mode {
+    --kartu-garis: #555;
+    --kartu-latar: #242424;
+    --kartu-teks: #f2f2f2;
+    --kartu-hover: #2a3340;
+    --kartu-teks-hover: #f2f2f2;
+    --komentar-aksen: #6fa8dc;
+}
