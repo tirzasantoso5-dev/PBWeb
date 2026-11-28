@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login — Profil Saya</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body bgcolor="maroon" text="white">
+<main class="login-wrap">
+    <h1>LOGIN</h1>
+    <hr>
+    <form id="form-login">
+        <input id="username" name="username" type="text" placeholder="Username" autocomplete="username" required>
+        <input id="password" name="password" type="password" placeholder="Password" autocomplete="current-password" required>
+        <label><input id="ingat" name="ingat" type="checkbox"> Ingat saya</label>
+        <button type="submit">Masuk</button>
+    </form>
+    <p id="pesan"></p>
+    <p><small>Akun uji (DummyJSON): emilys / emilyspass</small></p>
+</main>
+
+<script src="auth.js"></script>
+<script>
+if (sudahLogin()) location.replace("index.html");
+const params = new URLSearchParams(location.search);
+if (params.get("sesi") === "habis") {
+  document.querySelector("#pesan").textContent = "Sesi berakhir, silakan masuk lagi.";
+}
+document.querySelector("#form-login").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const pesan = document.querySelector("#pesan");
+  const tombol = e.target.querySelector("button");
+  tombol.disabled = true;          // cegah kirim dua kali
+  pesan.textContent = "Memproses...";
+  try {
+    await login(e.target.username.value.trim(), e.target.password.value, e.target.ingat.checked);
+    location.href = "index.html";
+  } catch (err) {
+    pesan.textContent = err instanceof TypeError
+      ? "Gagal terhubung ke server, periksa koneksi internet."
+      : err.message;
+    tombol.disabled = false;
+  }
+});
+</script>
+</body>
+</html>

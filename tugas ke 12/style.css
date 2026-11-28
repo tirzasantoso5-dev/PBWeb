@@ -1,0 +1,156 @@
+.halaman {
+    min-height: 100vh;
+    display: none;
+    padding: 40px;
+}
+
+.halaman.aktif {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Langkah 2: gaya dark mode */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #f2f2f2;
+}
+
+/* Langkah 3: sembunyikan aside */
+.tersembunyi {
+    display: none;
+}
+
+/* MODUL 5 B.2: efek hover pada artikel */
+.artikel-hover {
+    background-color: #eef4fb;
+    color: #1a1a1a;
+}
+
+/* MODUL 5 tugas: pesan error validasi */
+#pesan-error {
+    color: #ffcc00;
+    font-weight: bold;
+}
+
+/* MODUL 5 tugas: tombol kembali ke atas */
+#btn-atas {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+#btn-atas.tersembunyi {
+    display: none;
+}
+
+/*MODUL 8  spinner loading */
+.spinner {
+    width: 40px;
+    height: 40px;
+    margin: 10px auto;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #ffcc00;
+    border-radius: 50%;
+    animation: putar 1s linear infinite;
+}
+
+@keyframes putar {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* MODUL 8 pesan error fetch*/
+#pesan-fetch-error,
+#pesan-komentar-error {
+    color: #ffcc00;
+    font-weight: bold;
+}
+
+/*MODUL 8 daftar komentar dari API */
+#daftar-komentar-api {
+    text-align: left;
+}
+
+/* MODUL 10 — Custom Elements */
+kartu-artikel,
+kartu-komentar {
+    display: block;   /* wajib agar tata letak berjalan */
+}
+
+.daftar-portofolio,
+.daftar-artikel {
+    width: min(640px, 100%);
+}
+
+#daftar-komentar {
+    width: min(640px, 100%);
+}
+
+/* MODUL 11 — gaya komponen Shadow DOM
+   Aturan .kartu, .kartu time, dan .komentar-item DIHAPUS dari sini karena
+   elemennya kini berada di dalam shadow tree (CSS global tidak menjangkaunya);
+   gayanya pindah ke <template> di komponen.js. Halaman hanya mengatur
+   custom property dan bagian yang sengaja dibuka lewat ::part(). */
+:root {
+    --kartu-garis: #ddd;
+    --kartu-latar: transparent;
+    --kartu-teks: #ffffff;        /* custom property baru 1 */
+    --kartu-radius: 8px;          /* custom property baru 2 */
+    --kartu-hover: #eef4fb;
+    --kartu-teks-hover: #1a1a1a;
+    --komentar-aksen: #ffcc00;
+}
+
+/* ::part() — gaya tombol Like & Hapus diatur dari halaman */
+kartu-artikel::part(tombol-like) {
+    border: 1px solid #ffcc00;
+    border-radius: 6px;
+    background: #ffcc00;
+    color: #1a1a1a;
+    font-weight: bold;
+}
+kartu-artikel::part(tombol-hapus) {
+    border: 1px solid #ffcc00;
+    border-radius: 6px;
+    background: transparent;
+    color: inherit;
+}
+
+/* Dark mode: cukup ganti nilai variabel; komponen ikut berganti tema */
+body.dark-mode {
+    --kartu-garis: #555;
+    --kartu-latar: #242424;
+    --kartu-teks: #f2f2f2;
+    --kartu-hover: #2a3340;
+    --kartu-teks-hover: #f2f2f2;
+    --komentar-aksen: #6fa8dc;
+}
+/* MODUL 12 — gaya tambahan untuk halaman login dan info akun (file terpisah) */
+#form-login {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: min(320px, 100%);
+    margin: 0 auto;
+}
+#form-login input[type="text"],
+#form-login input[type="password"] { padding: 8px; }
+#form-login label { text-align: left; font-size: 0.9em; }
+#form-login button { padding: 8px; cursor: pointer; }
+.login-wrap { text-align: center; padding: 40px 16px; }
+#pesan { color: #ffcc00; font-weight: bold; min-height: 1.2em; }
+.info-akun { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 8px 0; }
+.info-akun img { width: 40px; height: 40px; border-radius: 50%; background: #fff; }
+.info-akun img[hidden] { display: none; 
+}
+/* TUGAS MANDIRI 3 — elemen khusus pemilik disembunyikan bila belum login (UX saja).
+   ::part(tombol-hapus) memakai part yang sudah disediakan <kartu-artikel>. */
+body.belum-login #btn-tambah,
+body.belum-login kartu-artikel::part(tombol-hapus) { display: none; }
+
+/* TUGAS MANDIRI 4 — hitung mundur sesi */
+#sisa-waktu { font-size: 0.85em; opacity: 0.85; }
